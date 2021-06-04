@@ -5,10 +5,7 @@
  */
 package com.unicahccpmp.trabajoenclase.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -20,13 +17,13 @@ public class Conn {
     public void obtenerConeccion(){
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:minecraft.db");
+            c = DriverManager.getConnection("jdbc:sqlite:minecraftdb.db");
             String SQLCrearTabla = "CREATE TABLE IF NOT EXISTS MINECRAFT"
                     + " (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                     + " MINECRAFTBLOCKNAME TEXT NOT NULL,"
-                    + " MINECRATFTCRAFTRECEIPT TEXT NOT NULL,"
-                    + " MINECRAFTATTACK INTEGER NULL"
-                    + " MINECRAFTDEFENSE INTEGER NULL"
+                    + " MINECRAFTRECEIPT TEXT NOT NULL,"
+                    + " MINECRAFTATTACK INTEGER NOT NULL,"
+                    + " MINECRAFTDEFENSE INTEGER NOT NULL"
                     + ")";
             Statement comandoSql = c.createStatement();
             comandoSql.executeUpdate(SQLCrearTabla);
@@ -51,7 +48,7 @@ public ArrayList<DataBaseEntry> obtenerRegistros(){
                 DataBaseEntry registroIterando = new DataBaseEntry();
                 registroIterando.setID(rs.getInt("ID"));
                 registroIterando.setMINECRAFTBLOCKNAME(rs.getString("MINECRAFTBLOCKNAME"));
-                registroIterando.setMINECRATFTCRAFTRECEIPT(rs.getString("MINECRATFTCRAFTRECEIPT"));
+                registroIterando.setMINECRAFTRECEIPT(rs.getString("MINECRAFTRECEIPT"));
                 registroIterando.setMINECRAFTATTACK(rs.getInt("MINECRAFTATTACK"));
                 registroIterando.setMINECRAFTDEFENSE(rs.getInt("MINECRAFTDEFENSE"));
                 

@@ -5,10 +5,8 @@
  */
 package com.unicahccpmp.trabajoenclase;
 
-import com.unicahccpmp.trabajoenclase.dao.Conn;
-import com.unicahccpmp.trabajoenclase.dao.DataBaseEntry;
+import com.unicahccpmp.trabajoenclase.dao.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *

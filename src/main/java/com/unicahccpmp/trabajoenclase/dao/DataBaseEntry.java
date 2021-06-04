@@ -10,9 +10,51 @@ package com.unicahccpmp.trabajoenclase.dao;
  * @author Carlos
  */
 public class DataBaseEntry {
+    
+    
+    public int getID() {
+        return _ID;
+    }
+    
+    public void setID(int _ID) {
+        this._ID = _ID;
+    }
+    
+    public String getMINECRAFTBLOCKNAME() {
+        return _MINECRAFTBLOCKNAME;
+    }
+    
+     public void setMINECRAFTBLOCKNAME(String _MINECRAFTBLOCKNAME) {
+        this._MINECRAFTBLOCKNAME= _MINECRAFTBLOCKNAME;
+    }
+    
+    public String getMINECRAFTRECEIPT() {
+        return _MINECRAFTRECEIPT;
+    }
+    
+    public void setMINECRAFTRECEIPT(String _MINECRAFTRECEIPT) {
+        this._MINECRAFTRECEIPT= _MINECRAFTRECEIPT;
+    }
+    
+    public int getMINECRAFTATTACK() {
+        return _MINECRAFTATTACK;
+    }
+    
+    public void setMINECRAFTATTACK(int _MINECRAFTATTACK) {
+        this._MINECRAFTATTACK = _MINECRAFTATTACK;
+    }
+
+    public int getMINECRAFTDEFENSE() {
+        return _MINECRAFTDEFENSE;
+    }
+    
+    public void setMINECRAFTDEFENSE(int _MINECRAFTDEFENSE) {
+        this._MINECRAFTDEFENSE = _MINECRAFTDEFENSE;
+    }
+    
     private int _ID;
     private String _MINECRAFTBLOCKNAME;
-    private String _MINECRATFTCRAFTRECEIPT;
+    private String _MINECRAFTRECEIPT;
     private int _MINECRAFTATTACK;
     private int _MINECRAFTDEFENSE;
     
@@ -21,30 +63,9 @@ public class DataBaseEntry {
                 "%d\t%-40s\t%-15s\t%-15d\t%-40d",
                 _ID,
                 _MINECRAFTBLOCKNAME,
-                _MINECRATFTCRAFTRECEIPT,
+                _MINECRAFTRECEIPT,
                 _MINECRAFTATTACK,
                 _MINECRAFTDEFENSE
         );
     }
-
-    void setID(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setMINECRAFTBLOCKNAME(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setMINECRATFTCRAFTRECEIPT(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setMINECRAFTATTACK(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setMINECRAFTDEFENSE(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
