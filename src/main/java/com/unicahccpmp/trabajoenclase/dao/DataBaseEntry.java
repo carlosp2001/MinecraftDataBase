@@ -60,7 +60,7 @@ public class DataBaseEntry {
     
     public String obtenerTextoConFormato(){
         return String.format(
-                "%d\t%-40s\t%-15s\t%-15d\t%-40d",
+                "%d\t%-40s\t%-30s\t%-15d\t%-40d",
                 _ID,
                 _MINECRAFTBLOCKNAME,
                 _MINECRAFTRECEIPT,

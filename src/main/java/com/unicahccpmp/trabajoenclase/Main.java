@@ -21,8 +21,28 @@ public class Main {
     miConexion = new Conn();
     miConexion.obtenerConeccion();
     SeparadorDeLinea = new String(new char[118]).replace("\0", "-");
+    mostrarRegistros();
     
     
+    }
     
+     public static void mostrarRegistros(){
+        misRegistros = miConexion.obtenerRegistros();
+        
+        System.out.println(SeparadorDeLinea);
+        System.out.println(String.format("%s\t%-15s\t%-16s\t%-15s\t%-15s\t%-15s", "#","MINECRAFTBLOCKNAME","", "MINECRAFTRECEIPT", "MINECRAFTATTACK", "MINECRAFTDEFENSE"));
+        System.out.println(SeparadorDeLinea);
+        // foreach item in arraylist
+        for (DataBaseEntry _registro : misRegistros) { // pod cada elemento en myEntries asignelo a _entry interando
+            System.out.println(_registro.obtenerTextoConFormato());
+        }
+        /*
+        for (int i = 0; i < myEntries.size(); i++){
+            System.out.println(myEntries.get(i).getFormattedText());
+        }
+        */
+        System.out.println(SeparadorDeLinea);
+        System.out.println(String.format("Total Rows: %d",misRegistros.size()));
+        
     }
 }
