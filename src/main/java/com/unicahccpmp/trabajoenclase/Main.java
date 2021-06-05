@@ -8,6 +8,15 @@ package com.unicahccpmp.trabajoenclase;
 import com.unicahccpmp.trabajoenclase.dao.*;
 import java.util.ArrayList;
 
+/** Grupo #4
+ * Suany Nohemy Garcia Argueta
+ * Angel Fernando Hernández Alvarado
+ * Carlos ALberto Pineda
+ * Joel Enrique Flores Santos
+ * José Eduardo Reyes Suazo
+ */
+
+
 /**
  *
  * @author Carlos
