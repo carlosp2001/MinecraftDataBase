@@ -22,8 +22,8 @@ public class Conn {
                     + " (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                     + " MINECRAFTBLOCKNAME TEXT NOT NULL,"
                     + " MINECRAFTRECEIPT TEXT NOT NULL,"
-                    + " MINECRAFTATTACK INTEGER NOT NULL,"
-                    + " MINECRAFTDEFENSE INTEGER NOT NULL"
+                    + " MINECRAFTATTACK INTEGER,"
+                    + " MINECRAFTDEFENSE INTEGER"
                     + ")";
             Statement comandoSql = c.createStatement();
             comandoSql.executeUpdate(SQLCrearTabla);
@@ -64,4 +64,65 @@ public ArrayList<DataBaseEntry> obtenerRegistros(){
         }
     }
 
+public void agregarNuevoRegistro(DataBaseEntry newEntry){
+        try {
+        String sentenciaSql = "INSERT INTO MINECRAFT (MINECRAFTBLOCKNAME, MINECRAFTRECEIPT, MINECRAFTATTACK, MINECRAFTDEFENSE) valueS ('%s','%s','%s','%s');";
+        Statement comandoSql = c.createStatement();
+        comandoSql.executeUpdate(String.format(sentenciaSql,
+                newEntry.getMINECRAFTBLOCKNAME(),
+                newEntry.getMINECRAFTRECEIPT(),
+                newEntry.getMINECRAFTATTACK(),
+                newEntry.getMINECRAFTDEFENSE()
+            )
+        );
+        comandoSql.close();
+        } catch (Exception e) {
+            System.err.println(" Error " + e.getMessage());
+            System.exit(0);
+        }
+    }
+    public DataBaseEntry obtenerUnRegistro( int idRegistro) {
+            try{
+                String setenciaSql = "SELECT * from MINECRAFT where ID=%d;";
+                Statement comandoSql = c.createStatement();
+                ResultSet cursorDeRegistro = comandoSql.executeQuery(
+                    String.format(setenciaSql, idRegistro)
+                );
+                DataBaseEntry miRegistro = new DataBaseEntry();
+                while ( cursorDeRegistro.next()){
+                    miRegistro.setID(cursorDeRegistro.getInt("ID"));
+                    miRegistro.setMINECRAFTBLOCKNAME(cursorDeRegistro.getString("MINECRAFTBLOCKNAME"));
+                    miRegistro.setMINECRAFTRECEIPT(cursorDeRegistro.getString("MINECRAFTRECEIPT"));
+                    miRegistro.setMINECRAFTATTACK(cursorDeRegistro.getInt("MINECRAFTATTACK"));
+                    miRegistro.setMINECRAFTDEFENSE(cursorDeRegistro.getInt("MINECRAFTDEFENSE"));
+                }
+                return miRegistro;
+            } catch (Exception e) {
+                System.err.println(" Error " + e.getMessage());
+                System.exit(0);
+                return null;
+            }
+}
+     public void actualizarRegistro(DataBaseEntry registroAActualizar){
+        try {
+            String sentencialSQL = "UPDATE MINECRAFT set MINECRAFTBLOCKNAME='%s', "
+                    + "MINECRAFTRECEIPT='%s', MINECRAFTATTACK='%s', MINECRAFTDEFENSE='%d' "
+                    + "where ID=%d;";
+            Statement comandoSQL = c.createStatement();
+            comandoSQL.executeUpdate(
+                    String.format( 
+                            sentencialSQL,
+                            registroAActualizar.getMINECRAFTBLOCKNAME(),
+                            registroAActualizar.getMINECRAFTRECEIPT(),
+                            registroAActualizar.getMINECRAFTATTACK(),
+                            registroAActualizar.getMINECRAFTDEFENSE(),
+                            registroAActualizar.getID()
+                    )
+            );
+            comandoSQL.close();
+        } catch (Exception ex){
+            System.err.println(" Error " + ex.getMessage());
+            System.exit(0);
+        }
+    }
 }
