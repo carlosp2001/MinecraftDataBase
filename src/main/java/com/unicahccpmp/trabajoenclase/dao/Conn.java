@@ -125,4 +125,21 @@ public void agregarNuevoRegistro(DataBaseEntry newEntry){
             System.exit(0);
         }
     }
+     
+    public void eliminarRegistro(DataBaseEntry registroAEliminar){
+        try {
+            String sentenciaSQL = "DELETE from MINECRAFT where ID=%d;";
+            Statement comandoSQL = c.createStatement();
+            comandoSQL.executeUpdate(
+                    String.format(
+                            sentenciaSQL,
+                            registroAEliminar.getID()
+                    )
+            );
+            comandoSQL.close();
+        } catch(Exception ex){
+            System.err.println(" Error " + ex.getMessage());
+            System.exit(0);
+        }
+    }
 }
